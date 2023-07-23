@@ -6,11 +6,11 @@ contents = f.read()  # read file
 f.close()  # close the file
 
 list = contents.split("\n")  # split the contents of the file into a list
-print(list)  # print the list
+# print(list)  # print the list
 # use len and index to parse out txt file
 for i in range(len(list)):
     list[i] = list[i].split(",")
-print(list)  # print the list
+# print(list)  # print the list
 
 
 def print_menu():
@@ -106,32 +106,90 @@ def choice2():
 
 
 def choice3():
-    print("Highest avg_grade")
+    for student in range(len(list)):
+        avg_grade = list[student][3]
+        high_grade = max(avg_grade)
+        high_grade = float(max(high_grade))
+        if high_grade > 90 and high_grade < 100:
+            grade_ltr = "A"
+        elif high_grade > 80 and high_grade < 89:
+            grade_ltr = "B"
+        elif high_grade > 70 and high_grade < 79:
+            grade_ltr = "C"
+        elif high_grade > 60 and high_grade < 69:
+            grade_ltr = "D"
+        elif high_grade < 60:
+            grade_ltr = "F"
+    print("Highest Grade:", grade_ltr, "at", high_grade, "%")
 
 
 def choice4():
     print("Lowest avg_grade")
+    # re-use code from choice 3 but I am stuck
 
 
 def choice5():
-    print("Students in MSIT")
-    # for student in range(len(list)):
-    #     student_id = list[index][0]
-    #     avg_grade = list[student][3]
-    #     program = list[student][4]
-    #     print("Students in MSIT")
+    print("Students in MSIT:")
+    for student in range(len(list)):
+        program = list[student][4]
+        first_name = list[student][1]
+        last_name = list[student][2]
+        if program == "MSIT":
+            print(first_name, last_name)
 
 
 def choice6():
-    print("Students in MSCM")
+    print("Students in MSCM:")
+    for student in range(len(list)):
+        program = list[student][4]
+        first_name = list[student][1]
+        last_name = list[student][2]
+        if program == "MSCM":
+            print(first_name, last_name)
 
 
 def choice7():
-    print("Students sorted by ID")
+    print("Students sorted by ID:")
+    for student in range(len(list)):
+        student_id = list[student][0]
+        student_id_split = student_id.split("\n")
+        # student_id_split = int(student_id_split)
+        # student_id.sort()
+        sorted_student_ID = sorted(student_id_split)
+        print(sorted_student_ID)
+
+
+# program = list[student][4]
+# first_name = list[student][1]
+# last_name = list[student][2]
+# if program == "MSCM":
+# print(first_name, last_name)
 
 
 def choice8():
-    print("Show invalid records")
+    print("Show invalid records:")
+    for student in range(len(list)):
+        student_id = list[student][0]
+        grade = list[student][3]
+        grade = float(grade)
+        program = list[student][4]
+        first_name = list[student][1]
+        last_name = list[student][2]
+        if program == "":
+            print("invalid record")  # need to indicate which record is invalid...
+        elif first_name == "":
+            print("invalid record")
+        elif last_name == "":
+            print("invaid record")
+        elif student_id == "":
+            print("invaid record")
+        elif grade == "":
+            print("invaid record")
+        elif grade > 100 or grade < 0:
+            print("invaid record")
+        # elif program != "MIST" or "MSCM"
+        # print("invaid record")
+        # There should be 4 total invaild records 1 misnamed program, 1 grade over 100, 1 missing first name, and 1 missing last name
 
 
 def choice9():
